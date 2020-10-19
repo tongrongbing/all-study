@@ -19,5 +19,10 @@ public class LongTest {
 
         Double b = new Double(1111.0);
         System.out.println(b == d);
+
+        Integer x = 100;
+        Long y = 100L;
+        System.out.println(x.hashCode());
+        System.out.println(y.hashCode());
     }
 }
