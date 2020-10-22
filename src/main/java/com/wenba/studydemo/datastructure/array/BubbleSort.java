@@ -13,6 +13,9 @@ public class BubbleSort {
 
         bubbleSort(array);
 
+        int i = 1;
+        System.out.println(--i);
+        System.out.println(i);
     }
 
     private static void bubbleSort(int[] array){
