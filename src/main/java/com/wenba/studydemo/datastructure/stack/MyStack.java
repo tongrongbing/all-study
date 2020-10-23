@@ -14,15 +14,8 @@ public class MyStack<E> {
 
     private int elementCount;
 
-    private int top;
-
     public MyStack(){
-        init();
-    }
-
-    private void init() {
         elements = new Object[10];
-        top = -1;
     }
 
     public MyStack(int initCapacity){
@@ -56,7 +49,7 @@ public class MyStack<E> {
         }
         int destLength = elementCount-1-index;
         if (destLength > 0){
-            System.arraycopy(elements,index,elements,index+1,destLength);
+            System.arraycopy(elements,index+1,elements,index,destLength);
         }
         elementCount--;
         elements[elementCount] = null;
@@ -90,13 +83,19 @@ public class MyStack<E> {
 
     public void grow(int minCapacity) {
         int oldCapacity = elements.length;  // 数组容量
-        if(oldCapacity < minCapacity){ // 需要扩容
-            minCapacity = oldCapacity << 1; // 扩大一倍
-            int newCapacity = hugeCapacity(minCapacity);
-            elements = Arrays.copyOf(elements, newCapacity);
+        int newCapacity = oldCapacity + oldCapacity << 1;
+        if (newCapacity - minCapacity < 0){
+            newCapacity = minCapacity;
         }
+        if (newCapacity > Integer.MAX_VALUE -8){
+            hugeCapacity(minCapacity);
+        }
+        elements = Arrays.copyOf(elements, newCapacity);
     }
 
+    public boolean empty(){
+        return size() == 0;
+    }
     public void getElements(){
         for (int i = 0; i < elements.length; i++) {
             System.out.print(elements[i] +" ");
@@ -121,16 +120,7 @@ public class MyStack<E> {
         myStack.removeElementAt(5);
         myStack.getElements();
 
-        /*System.out.println(myStack.elements.length);
 
-        int[] array = new int[20];
-        for (int i = 0; i <10 ; i++) {
-            array[i] = i;
-        }
-        System.out.println(Arrays.toString(array));
-        System.arraycopy(array,3,array,2,7);
-        array[10-1] = 0;
-        System.out.println(Arrays.toString(array));*/
 
     }
 
