@@ -42,11 +42,19 @@ public interface ILinkedList<T> {
     boolean add(int index, T data);
 
     /**
-     * 添加结点
+     * 链表头部添加元素
      * @param data
      * @return
      */
-    boolean add(T data);
+    boolean addFirst(T data);
+
+    /**
+     * 链表尾部添加元素
+     * @param data
+     * @return
+     */
+    boolean addLast(T data);
+
 
     /**
      * 根据index移除结点
