@@ -106,9 +106,9 @@ public class MySingleLinkedList<T> implements ILinkedList<T>{
             throw new IllegalArgumentException("参数有误...");
         }
         // 找到指定位置之前的元素
-        Object returnValue = null;
+        T returnValue = null;
         if (this.head != null){
-            Node node = this.head;
+            Node<T> node = this.head;
             int count = 0;
             while (node.next != null && count < index){
                 node = node.next;
@@ -117,7 +117,7 @@ public class MySingleLinkedList<T> implements ILinkedList<T>{
             returnValue = node.data;
             node.data = data;
         }
-        return (T) returnValue;
+        return returnValue;
     }
 
     /**
